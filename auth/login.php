@@ -5,7 +5,13 @@ require "../includes/header.php";
 
 <?php require "../config/config.php"; ?>
 
-<?php if (isset($_POST['submit'])) {
+<?php
+
+if (isset($_SESSION['username'])) {
+	header("location: " . APPURL . "");
+}
+
+if (isset($_POST['submit'])) {
 	if (empty($_POST['email']) or empty($_POST['password'])) {
 		echo "<script>alert('Complete Required Information!');</script>";
 	} else {

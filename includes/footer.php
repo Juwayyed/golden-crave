@@ -1,5 +1,5 @@
 <?php
-define('API_KEY', 'AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s');
+define('API_KEY', 'AIzaSyBPN7HXWrt6Z7LKIDxqaR76imEVhIyG4ko');
 ?>
 
 <footer class="ftco-footer ftco-section img">

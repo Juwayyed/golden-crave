@@ -71,28 +71,30 @@ define("APPURL", "http://localhost/golden-crave/");
           <li class="nav-item">
             <a href="<?php echo APPURL; ?>contact.php" class="nav-link">Contact</a>
           </li>
-          <li class="nav-item cart">
-            <a href="<?php echo APPURL; ?>/cart.php" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
-          </li>
+          <?php if (isset($_SESSION['username'])) : ?>
+            <li class="nav-item cart">
+              <a href="<?php echo APPURL; ?>/cart.php" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
+            </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php echo $_SESSION['username']; ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a href="<?php echo APPURL; ?>auth/login.php" class="nav-link">login</a>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo APPURL; ?>auth/register.php" class="nav-link">register</a>
-          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php echo $_SESSION['username']; ?>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo APPURL; ?>auth/logout.php">Logout</a>
+              </div>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a href="<?php echo APPURL; ?>auth/login.php" class="nav-link">login</a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo APPURL; ?>auth/register.php" class="nav-link">register</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
