@@ -73,7 +73,7 @@ define("APPURL", "http://localhost/golden-crave/");
           </li>
           <?php if (isset($_SESSION['username'])) : ?>
             <li class="nav-item cart">
-              <a href="<?php echo APPURL; ?>/cart.php" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
+              <a href="<?php echo APPURL; ?>cart.php" class="nav-link"><span class="icon icon-shopping_cart"></span></a>
             </li>
 
             <li class="nav-item dropdown">

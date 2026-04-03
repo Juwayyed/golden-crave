@@ -35,7 +35,7 @@ define('API_KEY', 'AIzaSyBPN7HXWrt6Z7LKIDxqaR76imEVhIyG4ko');
           <div class="block-21 mb-4 d-flex">
             <a
               class="blog-img mr-4"
-              style="background-image: url(../images/image_1.jpg)"></a>
+              style="background-image: url(<?php echo APPURL; ?>/images/image_1.jpg)"></a>
             <div class="text">
               <h3 class="heading">
                 <a href="#">Savory Pasta with Richly Seasoned Ground Beef</a>
@@ -56,7 +56,7 @@ define('API_KEY', 'AIzaSyBPN7HXWrt6Z7LKIDxqaR76imEVhIyG4ko');
           <div class="block-21 mb-4 d-flex">
             <a
               class="blog-img mr-4"
-              style="background-image: url(../images/image_2.jpg)"></a>
+              style="background-image: url(<?php echo APPURL; ?>/images/image_2.jpg)"></a>
             <div class="text">
               <h3 class="heading">
                 <a href="#">Spaghetti Tossed with Fresh and Fragrant Basil</a>
@@ -100,7 +100,7 @@ define('API_KEY', 'AIzaSyBPN7HXWrt6Z7LKIDxqaR76imEVhIyG4ko');
                 <a href="#"><span class="icon icon-phone"></span><span class="text">+2 393 3928 211</span></a>
               </li>
               <li>
-                <a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a>
+                <a href="#"><span class="icon icon-envelope"></span><span class="text">info@golden-crave.com</span></a>
               </li>
             </ul>
           </div>
@@ -162,6 +162,7 @@ define('API_KEY', 'AIzaSyBPN7HXWrt6Z7LKIDxqaR76imEVhIyG4ko');
 <script src="<?php echo APPURL; ?>/js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY; ?>&sensor=false"></script>
 <script src="<?php echo APPURL; ?>/js/google-map.js"></script>
+<script src="<?php echo APPURL; ?>/js/handle-quantity.js"></script>
 <script src="<?php echo APPURL; ?>/js/main.js"></script>
 </body>
 
