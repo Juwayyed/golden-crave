@@ -1,113 +1,148 @@
-<?php 
+<?php
 $PageTitle = "Checkout";
-require "../includes/header.php";
+require "./includes/header.php";
 ?>
 
-    <section class="home-slider owl-carousel">
+<?php
+require "./config/config.php";
+?>
 
-      <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
+<?php
+if (isset($_POST['submit'])) {
+	if (empty($_POST['first_name']) or empty($_POST['last_name']) or empty($_POST['state']) or empty($_POST['street_address']) or empty($_POST['town']) or empty($_POST['zip_code']) or empty($_POST['phone']) or empty($_POST['email'])) {
+		echo "<script>alert('Complete Required Information!');</script>";
+	} else {
+		$first_name = $_POST['first_name'];
+		$last_name = $_POST['last_name'];
+		$state = $_POST['state'];
+		$street_address = $_POST['street_address'];
+		$town = $_POST['town'];
+		$zip_code = $_POST['zip_code'];
+		$phone = $_POST['phone'];
+		$email = $_POST['email'];
+		$user_id = $_SESSION['user_id'];
+		$status = "pending";
+		$total_price = $_SESSION['total_price'];
 
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Checkout</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checout</span></p>
-            </div>
+		$place_order = $connection->prepare("INSERT INTO orders (first_name, last_name, state, street_address, town, zip_code, phone, email, user_id, status, total_price) VALUES (:first_name, :last_name, :state, :street_address, :town, :zip_code, :phone, :email, :user_id, :status, :total_price)");
+		$place_order->execute([
+			":first_name" => $first_name,
+			":last_name" => $last_name,
+			":state" => $state,
+			":street_address" => $street_address,
+			":town" => $town,
+			":zip_code" => $zip_code,
+			":phone" => $phone,
+			":email" => $email,
+			":user_id" => $user_id,
+			":status" => $status,
+			":total_price" => $total_price
+		]);
+		header("location: payment.php");
+	}
+}
+?>
 
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="home-slider owl-carousel">
 
-    <section class="ftco-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 ftco-animate">
-						<form action="#" class="billing-form ftco-bg-dark p-3 p-md-5">
-							<h3 class="mb-4 billing-heading">Billing Details</h3>
-	          	<div class="row align-items-end">
-	          		<div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="firstname">Firt Name</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="lastname">Last Name</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-		            <div class="col-md-12">
-		            	<div class="form-group">
-		            		<label for="country">State / Country</label>
-		            		<div class="select-wrap">
-		                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-		                  <select name="" id="" class="form-control">
-		                  	<option value="">France</option>
-		                    <option value="">Italy</option>
-		                    <option value="">Spain</option>
-		                    <option value="">Netherlands</option>
-		                    <option value="">Germany</option>
-		                    <option value="">Belgium</option>
-		                  </select>
-		                </div>
-		            	</div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-12">
-		            	<div class="form-group">
-	                	<label for="streetaddress">Street Address</label>
-	                  <input type="text" class="form-control" placeholder="House number and street name">
-	                </div>
-		            </div>
-		            <div class="col-md-12">
-		            	<div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-	                	<label for="towncity">Town / City</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="col-md-6">
-		            	<div class="form-group">
-		            		<label for="postcodezip">Postcode / ZIP *</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-		            </div>
-		            <div class="w-100"></div>
-		            <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="phone">Phone</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-	              </div>
-	              <div class="col-md-6">
-	                <div class="form-group">
-	                	<label for="emailaddress">Email Address</label>
-	                  <input type="text" class="form-control" placeholder="">
-	                </div>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-md-12">
-                	<div class="form-group mt-4">
-										<div class="radio">
-                      <p><a href="#"class="btn btn-primary py-3 px-4">Place an order</a></p>
+	<div class="slider-item" style="background-image: url(<?php echo APPURL; ?>images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row slider-text justify-content-center align-items-center">
 
-										</div>
-									</div>
-                </div>
-	            </div>
-	          </form><!-- END -->
+				<div class="col-md-7 col-sm-12 text-center ftco-animate">
+					<h1 class="mb-3 mt-5 bread">Checkout</h1>
+					<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Checout</span></p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<form action="checkout.php" method="POST" class="billing-form ftco-bg-dark p-3 p-md-5">
+					<h3 class="mb-4 billing-heading">Billing Details</h3>
+					<div class="row align-items-end">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="firstname">Firt Name</label>
+								<input name="first_name" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="lastname">Last Name</label>
+								<input name="last_name" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="country">State / Country</label>
+								<div class="select-wrap">
+									<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+									<select name="state" id="" class="form-control">
+										<option value="France">France</option>
+										<option value="Italy">Italy</option>
+										<option value="Spain">Spain</option>
+										<option value="Netherlands">Netherlands</option>
+										<option value="Germany">Germany</option>
+										<option value="Belgium">Belgium</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="streetaddress">Street Address</label>
+								<input name="street_address" type="text" class="form-control" placeholder="House number and street name">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="towncity">Town / City</label>
+								<input name="town" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="postcodezip">Postcode / ZIP *</label>
+								<input name="zip_code" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phone">Phone</label>
+								<input name="phone" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="emailaddress">Email Address</label>
+								<input name="email" type="text" class="form-control" placeholder="">
+							</div>
+						</div>
+						<div class="w-100"></div>
+						<div class="col-md-12">
+							<div class="form-group mt-4">
+								<div class="radio">
+									<button type="submit" name="submit" class=" btn btn-primary py-3 px-4">Place an order</button>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</form><!-- END -->
 
 
-<!-- 
+				<!-- 
 	          <div class="row mt-5 pt-3 d-flex">
 	          	<div class="col-md-6 d-flex">
 	          		<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
@@ -166,48 +201,48 @@ require "../includes/header.php";
 								</div>
 	          	</div>
 	          </div> -->
-          </div> <!-- .col-md-8 -->
+			</div> <!-- .col-md-8 -->
 
-           
-          </div>
 
-        </div>
-      </div>
-    </section> <!-- .section -->
+		</div>
 
-  <script>
-		$(document).ready(function(){
+	</div>
+	</div>
+</section> <!-- .section -->
 
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
-		        
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		            
-		            $('#quantity').val(quantity + 1);
-		            // Increment
-		    });
+<script>
+	$(document).ready(function() {
 
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
-		        
-		        // If is not undefined
-		      
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
-		    });
+		var quantitiy = 0;
+		$('.quantity-right-plus').click(function(e) {
+
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			var quantity = parseInt($('#quantity').val());
+
+			// If is not undefined
+
+			$('#quantity').val(quantity + 1);
+			// Increment
 		});
-	</script>
 
-<?php 
-require "../includes/footer.php";
+		$('.quantity-left-minus').click(function(e) {
+			// Stop acting like a button
+			e.preventDefault();
+			// Get the field name
+			var quantity = parseInt($('#quantity').val());
+
+			// If is not undefined
+
+			// Increment
+			if (quantity > 0) {
+				$('#quantity').val(quantity - 1);
+			}
+		});
+	});
+</script>
+
+<?php
+require "./includes/footer.php";
 ?>

@@ -17,6 +17,10 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
 $cartTotal = $connection->query("SELECT SUM(quantity*price) AS total FROM cart WHERE user_id='$_SESSION[user_id]'");
 $cartTotal->execute();
 $wholeCartTotal = $cartTotal->fetch(PDO::FETCH_OBJ);
+if (isset($_POST['checkout'])) {
+  $_SESSION['total_price'] = $_POST['total_price'];
+  header("Location: checkout.php");
+}
 ?>
 
 <section class="home-slider owl-carousel">
@@ -137,7 +141,7 @@ $wholeCartTotal = $cartTotal->fetch(PDO::FETCH_OBJ);
           </p>
         </div>
         <form method="POST" action="cart.php">
-          <input type="hidden" value="<?php echo $wholeCartTotal->total + 10 - 3; ?>" />
+          <input type="hidden" name="total_price" value="<?php echo $wholeCartTotal->total + 10 - 3; ?>" />
           <p class="text-center">
             <?php if (count($allproducts) > 0) : ?>
               <button name="checkout" type="submit" class="btn btn-primary py-3 px-4">Proceed to Checkout</button>
