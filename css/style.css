@@ -10603,7 +10603,12 @@ h5,
 }
 
 .cart-list {
-  overflow-x: scroll;
+  overflow-x: hidden;
+}
+
+.cartListEmpty {
+  text-align: center;
+  font-size: 20px;
 }
 
 .table {
@@ -12171,4 +12176,10 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
+
+.buttons-container {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

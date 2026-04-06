@@ -8,6 +8,16 @@ require "./config/config.php";
 ?>
 
 <?php
+if (!isset($_SERVER['HTTP_REFERER'])) {
+	// redirect them to your desired location
+	header('location: http://localhost/golden-crave/');
+	exit;
+
+	if (!isset($_SESSION['user_id'])) {
+		header("location: " . APPURL . "");
+	}
+}
+
 if (isset($_POST['submit'])) {
 	if (empty($_POST['first_name']) or empty($_POST['last_name']) or empty($_POST['state']) or empty($_POST['street_address']) or empty($_POST['town']) or empty($_POST['zip_code']) or empty($_POST['phone']) or empty($_POST['email'])) {
 		echo "<script>alert('Complete Required Information!');</script>";
@@ -44,7 +54,6 @@ if (isset($_POST['submit'])) {
 ?>
 
 <section class="home-slider owl-carousel">
-
 	<div class="slider-item" style="background-image: url(<?php echo APPURL; ?>images/bg_3.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">

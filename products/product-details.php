@@ -13,9 +13,14 @@ if (isset($_GET['id'])) {
   $product = $connection->query("SELECT * FROM products WHERE id='$id'");
   $product->execute();
   $singleProduct = $product->fetch(PDO::FETCH_OBJ);
+  if (!$singleProduct) {
+    header("Location: " . APPURL . "error-404.php");
+    exit;
+  }
   $relatedProducts = $connection->query("SELECT * FROM products WHERE category='$singleProduct->category' AND id!='$singleProduct->id'");
   $relatedProducts->execute();
   $allRelatedProducts = $relatedProducts->fetchAll(PDO::FETCH_OBJ);
+
   if (isset($_POST['submit'])) {
     $image = $_POST['image'];
     $name = $_POST['name'];
@@ -41,6 +46,9 @@ if (isset($_GET['id'])) {
     $validateCart->execute();
     $rowCount = $validateCart->rowCount();
   }
+} else {
+  header("Location: " . APPURL . "error-404.php");
+  exit;
 }
 ?>
 

@@ -49,56 +49,60 @@ if (isset($_POST['checkout'])) {
     <div class="row">
       <div class="col-md-12 ftco-animate">
         <div class="cart-list">
-          <table class="table">
-            <thead class="thead-primary">
-              <tr class="text-center">
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($allproducts as $product) : ?>
+          <?php if (count($allproducts) > 0) : ?>
+            <table class="table">
+              <thead class="thead-primary">
                 <tr class="text-center">
-                  <td class="product-remove">
-                    <a href="<?php echo APPURL; ?>products/remove-product.php?id=<?php echo $product->id; ?>"><span class="icon-close"></span></a>
-                  </td>
-
-                  <td class="image-prod">
-                    <div
-                      class="img"
-                      style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $product->image; ?>)"></div>
-                  </td>
-
-                  <td class="product-name">
-                    <h3><?php echo $product->name; ?></h3>
-                    <p>
-                      <?php echo $product->description; ?>
-                    </p>
-                  </td>
-
-                  <td class="price">$<?php echo $product->price; ?></td>
-
-                  <td>
-                    <div class="input-group mb-3">
-                      <input
-                        disabled
-                        type="text"
-                        name="quantity"
-                        class="quantity form-control input-number"
-                        value="<?php echo $product->quantity; ?>"
-                        min="1"
-                        max="100" />
-                    </div>
-                  </td>
-                  <td class="total">$<?php echo $product->price * $product->quantity; ?></td>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
                 </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <?php foreach ($allproducts as $product) : ?>
+                  <tr class="text-center">
+                    <td class="product-remove">
+                      <a href="<?php echo APPURL; ?>products/remove-product.php?id=<?php echo $product->id; ?>"><span class="icon-close"></span></a>
+                    </td>
+
+                    <td class="image-prod">
+                      <div
+                        class="img"
+                        style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $product->image; ?>)"></div>
+                    </td>
+
+                    <td class="product-name">
+                      <h3><?php echo $product->name; ?></h3>
+                      <p>
+                        <?php echo $product->description; ?>
+                      </p>
+                    </td>
+
+                    <td class="price">$<?php echo $product->price; ?></td>
+
+                    <td>
+                      <div class="input-group mb-3">
+                        <input
+                          disabled
+                          type="text"
+                          name="quantity"
+                          class="quantity form-control input-number"
+                          value="<?php echo $product->quantity; ?>"
+                          min="1"
+                          max="100" />
+                      </div>
+                    </td>
+                    <td class="total">$<?php echo $product->price * $product->quantity; ?></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          <?php else : ?>
+            <p class="cartListEmpty">Your cart is empty! Start adding products.</p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -145,8 +149,6 @@ if (isset($_POST['checkout'])) {
           <p class="text-center">
             <?php if (count($allproducts) > 0) : ?>
               <button name="checkout" type="submit" class="btn btn-primary py-3 px-4">Proceed to Checkout</button>
-            <?php else : ?>
-              <button name="checkout" type="submit" class="btn btn-primary py-3 px-4" disabled>Proceed to Checkout</button>
             <?php endif; ?>
           </p>
         </form>
