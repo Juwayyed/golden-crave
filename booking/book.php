@@ -18,8 +18,10 @@ if (isset($_POST['submit'])) {
         $phone = $_POST['phone'];
         $message = $_POST['message'];
 
-        //("n/j/Y") -> Gets date without the leading zeroes (ex: 3/2/2026) instead of (03/02/2026)
-        if ($date > date("n/j/Y")) {
+        $input_date = strtotime($date);
+        $current_date = strtotime(date("Y-m-d"));
+
+        if ($input_date >= $current_date) {
             $insert = $connection->prepare("INSERT INTO bookings (user_id, first_name, last_name, date, time, phone, message) VALUES (:user_id, :first_name, :last_name, :date, :time, :phone, :message)");
 
             $insert->execute([
@@ -33,8 +35,37 @@ if (isset($_POST['submit'])) {
             ]);
 
             echo "<script>alert('Table booked successfully!');</script>";
-        } else {
             header("location: " . APPURL . "");
+            exit;
+        } else {
+            //header("location: " . APPURL . "");
+            echo "<script>alert('Please choose a valid future date!');</script>";
         }
     }
 }
+?>
+
+<section class="home-slider owl-carousel">
+    <div
+        class="slider-item"
+        style="background-image: url(<?php echo "APPURL;" ?>images/bg_3.jpg)"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div
+                class="row slider-text justify-content-center align-items-center">
+                <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                    <h1 class="mb-3 mt-5 bread">Return To</h1>
+                    <p class="breadcrumbs">
+                        <span class="mr-2"><a href="index.php">Home</a></span>
+                        <span>Menu</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php
+require "../includes/footer.php";
+?>

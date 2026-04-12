@@ -13,6 +13,12 @@ $products->execute();
 $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
 ?>
 
+<?php
+$hotProducts = $connection->query("SELECT * FROM products WHERE category = 'Hot_Drinks' LIMIT 4");
+$hotProducts->execute();
+$allHotProducts = $hotProducts->fetchAll(PDO::FETCH_OBJ);
+?>
+
 <section class="home-slider owl-carousel">
   <div class="slider-item" style="background-image: url(images/bg_1.jpg)">
     <div class="overlay"></div>
@@ -290,7 +296,7 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(images/menu-1.jpg)"></a>
+                style="background-image: url(<?php echo APPURL; ?>images/menu-1.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -298,7 +304,7 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(images/menu-2.jpg)"></a>
+                style="background-image: url(<?php echo APPURL; ?>images/menu-2.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -306,7 +312,7 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(images/menu-3.jpg)"></a>
+                style="background-image: url(<?php echo APPURL; ?>images/menu-3.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -314,7 +320,7 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(images/menu-4.jpg)"></a>
+                style="background-image: url(<?php echo APPURL; ?>images/menu-4.jpg)"></a>
             </div>
           </div>
         </div>
@@ -326,7 +332,7 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
 <section
   class="ftco-counter ftco-bg-dark img"
   id="section-counter"
-  style="background-image: url(images/bg_2.jpg)"
+  style="background-image: url(<?php echo APPURL; ?>images/bg_2.jpg)"
   data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
@@ -401,22 +407,22 @@ $allproducts = $products->fetchAll(PDO::FETCH_OBJ);
       </div>
     </div>
     <div class="row">
-      <?php foreach ($allproducts as $product) : ?>
+      <?php foreach ($allHotProducts as $hotProduct) : ?>
         <div class="col-md-3">
           <div class="menu-entry">
             <a
               target="_blank"
-              href="products/product-details.php?id=<?php echo $product->id; ?>"
+              href="products/product-details.php?id=<?php echo $hotProduct->id; ?>"
               class="img"
-              style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $product->image; ?>)"></a>
+              style="background-image: url(<?php echo APPURL; ?>images/<?php echo $hotProduct->image; ?>)"></a>
             <div class="text text-center pt-4">
-              <h3><a href=""><?php echo $product->name; ?></a></h3>
+              <h3><a href=""><?php echo $hotProduct->name; ?></a></h3>
               <p>
-                <?php echo $product->description; ?>
+                <?php echo $hotProduct->description; ?>
               </p>
-              <p class="price"><span>$<?php echo $product->price; ?></span></p>
+              <p class="price"><span>$<?php echo $hotProduct->price; ?></span></p>
               <p>
-                <a target="_blank" href="products/product-details.php?id=<?php echo $product->id; ?>" class="btn btn-primary btn-outline-primary">Show</a>
+                <a target="_blank" href="products/product-details.php?id=<?php echo $hotProduct->id; ?>" class="btn btn-primary btn-outline-primary">Show</a>
               </p>
             </div>
           </div>
