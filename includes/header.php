@@ -81,8 +81,8 @@ define("APPURL", "http://localhost/golden-crave/");
                 <?php echo $_SESSION['username']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="<?php echo APPURL; ?>user/bookings.php">My Bookings</a>
+                <a class="dropdown-item" href="<?php echo APPURL; ?>user/orders.php">My Orders</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?php echo APPURL; ?>auth/logout.php">Logout</a>
               </div>

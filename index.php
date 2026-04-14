@@ -19,6 +19,12 @@ $hotProducts->execute();
 $allHotProducts = $hotProducts->fetchAll(PDO::FETCH_OBJ);
 ?>
 
+<?php
+$testimonials = $connection->query("SELECT * FROM testimonials Limit 5");
+$testimonials->execute();
+$allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
+?>
+
 <section class="home-slider owl-carousel">
   <div class="slider-item" style="background-image: url(images/bg_1.jpg)">
     <div class="overlay"></div>
@@ -504,106 +510,26 @@ $allHotProducts = $hotProducts->fetchAll(PDO::FETCH_OBJ);
   </div>
   <div class="container-wrap">
     <div class="row d-flex no-gutters">
-      <div class="col-lg align-self-sm-end">
-        <div class="testimony">
-          <blockquote>
-            <p>
-              &ldquo;The food was absolutely amazing and the coffee was
-              perfect, every detail felt carefully made and full of flavor
-              Will definitely come back again.&rdquo;
-            </p>
-          </blockquote>
-          <div class="author d-flex mt-4">
-            <div class="image mr-3 align-self-center">
-              <img src="images/person_1.jpg" alt="" />
-            </div>
-            <div class="name align-self-center">
-              Tim Kelly
-              <span class="position">Interior Designer</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg align-self-sm-end">
-        <div class="testimony overlay">
-          <blockquote>
-            <p>
-              &ldquo;Everything tasted delicious and the atmosphere was warm
-              and welcoming I really enjoyed my time Soon I will bring my
-              friends with me.&rdquo;
-            </p>
-          </blockquote>
-          <div class="author d-flex mt-4">
-            <div class="image mr-3 align-self-center">
-              <img src="images/person_2.jpg" alt="" />
-            </div>
-            <div class="name align-self-center">
-              Charles Benson
-              <span class="position">Financing Consultant</span>
+      <?php foreach ($allTestimonials as $testimonials) : ?>
+        <div class="col-lg align-self-sm-end">
+          <div class="testimony">
+            <blockquote>
+              <p>
+                &ldquo;<?php echo $testimonials->quote; ?>&rdquo;
+              </p>
+            </blockquote>
+            <div class="author d-flex mt-4">
+              <div class="image mr-3 align-self-center">
+                <img src="<?php echo APPURL; ?>images/<?php echo $testimonials->image; ?>" alt="client photo" />
+              </div>
+              <div class="name align-self-center">
+                <?php echo $testimonials->client; ?>
+                <span class="position"><?php echo $testimonials->job; ?></span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg align-self-sm-end">
-        <div class="testimony">
-          <blockquote>
-            <p>
-              &ldquo;The coffee was rich and smooth and the sweets were
-              simply delightful the place has a special charm One day I will
-              not forget this experience. &rdquo;
-            </p>
-          </blockquote>
-          <div class="author d-flex mt-4">
-            <div class="image mr-3 align-self-center">
-              <img src="images/person_3.jpg" alt="" />
-            </div>
-            <div class="name align-self-center">
-              George Kyle
-              <span class="position">Lawyer</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg align-self-sm-end">
-        <div class="testimony overlay">
-          <blockquote>
-            <p>
-              &ldquo;The burgers were juicy and full of flavor and the
-              drinks were just perfect for the mood I loved every moment One
-              day I will visit again for sure. &rdquo;
-            </p>
-          </blockquote>
-          <div class="author d-flex mt-4">
-            <div class="image mr-3 align-self-center">
-              <img src="images/person_4.jpg" alt="" />
-            </div>
-            <div class="name align-self-center">
-              John Morrison
-              <span class="position">Architect</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg align-self-sm-end">
-        <div class="testimony">
-          <blockquote>
-            <p>
-              &ldquo;From the seafood to the desserts everything was
-              perfectly prepared and served with care I truly felt satisfied
-              One day I will come back for more. &rdquo;
-            </p>
-          </blockquote>
-          <div class="author d-flex mt-4">
-            <div class="image mr-3 align-self-center">
-              <img src="images/person_5.jpg" alt="" />
-            </div>
-            <div class="name align-self-center">
-              Bill Harold
-              <span class="position">Chef</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
