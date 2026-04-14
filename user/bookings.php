@@ -8,6 +8,9 @@ require "../config/config.php";
 ?>
 
 <?php
+if (!isset($_SESSION['user_id'])) {
+    header("location: " . APPURL . "");
+}
 $bookings = $connection->query("SELECT * FROM bookings WHERE user_id='$_SESSION[user_id]'");
 $bookings->execute();
 $allBookings = $bookings->fetchAll(PDO::FETCH_OBJ);
