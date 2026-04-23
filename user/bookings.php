@@ -53,6 +53,7 @@ $allBookings = $bookings->fetchAll(PDO::FETCH_OBJ);
                                     <th>Phone</th>
                                     <th>Message</th>
                                     <th>Status</th>
+                                    <th>Write a Review</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,6 +77,9 @@ $allBookings = $bookings->fetchAll(PDO::FETCH_OBJ);
                                             <?php echo $booking->message; ?>
                                         </td>
                                         <td class="total"><?php echo $booking->status; ?></td>
+                                        <?php if ($booking->status == "Confirmed") : ?>
+                                            <td class="total"><a class="btn btn-primary" href="<?php echo APPURL; ?>reviews/write-review.php">Write Review</a></td>
+                                        <?php endif; ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

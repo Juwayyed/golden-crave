@@ -53,6 +53,7 @@ $allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
                                     <th>Phone</th>
                                     <th>Total Price</th>
                                     <th>Status</th>
+                                    <th>Write a Review</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,6 +77,9 @@ $allOrders = $orders->fetchAll(PDO::FETCH_OBJ);
                                             $<?php echo $order->total_price; ?>
                                         </td>
                                         <td class="total"><?php echo $order->status; ?></td>
+                                        <?php if ($order->status == "Delivered") : ?>
+                                            <td class="total"><a class="btn btn-primary" href="<?php echo APPURL; ?>reviews/write-review.php">Write Review</a></td>
+                                        <?php endif; ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
