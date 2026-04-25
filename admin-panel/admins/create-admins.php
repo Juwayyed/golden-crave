@@ -1,6 +1,9 @@
 <?php require "../layouts/header.php"; ?>
 <?php require "../../config/config.php"; ?>
 <?php
+if (!isset($_SESSION['adminname'])) {
+  header("location: " . ADMINURL . "admins/login-admins.php");
+}
 if (isset($_POST['submit'])) {
   if (empty($_POST['adminname']) or empty($_POST['email']) or empty($_POST['password'])) {
     echo "<script>alert('Complete Required Information!');</script>";

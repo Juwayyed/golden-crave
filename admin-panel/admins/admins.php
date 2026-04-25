@@ -2,6 +2,10 @@
 <?php require "../../config/config.php"; ?>
 
 <?php
+if (!isset($_SESSION['adminname'])) {
+  header("location: " . ADMINURL . "admins/login-admins.php");
+}
+
 $admins = $connection->query("SELECT * FROM admins");
 $admins->execute();
 $allAdmins = $admins->fetchAll(PDO::FETCH_OBJ);
