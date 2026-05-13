@@ -26,7 +26,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <section class="home-slider owl-carousel">
-  <div class="slider-item" style="background-image: url(images/bg_1.jpg)">
+  <div class="slider-item" style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_1.jpg)">
     <div class="overlay"></div>
     <div class="container">
       <div
@@ -51,7 +51,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
     </div>
   </div>
 
-  <div class="slider-item" style="background-image: url(images/bg_2.jpg)">
+  <div class="slider-item" style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_2.jpg)">
     <div class="overlay"></div>
     <div class="container">
       <div
@@ -75,7 +75,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
     </div>
   </div>
 
-  <div class="slider-item" style="background-image: url(images/bg_3.jpg)">
+  <div class="slider-item" style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_3.jpg)">
     <div class="overlay"></div>
     <div class="container">
       <div
@@ -184,12 +184,20 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
                 class="form-control"
                 placeholder="Message"></textarea>
             </div>
-            <div class="form-group ml-md-4">
-              <button
-                type="submit"
-                name="submit"
-                class="btn btn-white py-3 px-4">Book a Table</button>
-            </div>
+            <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) : ?>
+              <div class="form-group ml-md-4">
+                <button
+                  type="submit"
+                  name="submit"
+                  class="btn btn-white py-3 px-4">Book a Table</button>
+              </div>
+            <?php else : ?>
+              <div class="form-group ml-md-4">
+                <a
+                  href="<?php echo APPURL; ?>auth/login.php"
+                  class="btn btn-white py-3 px-4">Log In</a>
+              </div>
+            <?php endif; ?>
           </div>
         </form>
       </div>
@@ -200,7 +208,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 <section class="ftco-about d-md-flex">
   <div
     class="one-half img"
-    style="background-image: url(images/about.jpg)"></div>
+    style="background-image: url(<?php echo PRODUCTIMAGE; ?>about.jpg)"></div>
   <div class="one-half ftco-animate">
     <div class="overlap">
       <div class="heading-section ftco-animate">
@@ -302,7 +310,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(<?php echo APPURL; ?>images/menu-1.jpg)"></a>
+                style="background-image: url(<?php echo PRODUCTIMAGE; ?>menu-1.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -310,7 +318,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(<?php echo APPURL; ?>images/menu-2.jpg)"></a>
+                style="background-image: url(<?php echo PRODUCTIMAGE; ?>menu-2.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -338,7 +346,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 <section
   class="ftco-counter ftco-bg-dark img"
   id="section-counter"
-  style="background-image: url(<?php echo APPURL; ?>images/bg_2.jpg)"
+  style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_2.jpg)"
   data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
@@ -420,7 +428,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               target="_blank"
               href="products/product-details.php?id=<?php echo $hotProduct->id; ?>"
               class="img"
-              style="background-image: url(<?php echo APPURL; ?>images/<?php echo $hotProduct->image; ?>)"></a>
+              style="background-image: url(<?php echo PRODUCTIMAGE . $hotProduct->image; ?>)"></a>
             <div class="text text-center pt-4">
               <h3><a href=""><?php echo $hotProduct->name; ?></a></h3>
               <p>
@@ -445,7 +453,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
         <a
           href="gallery.html"
           class="gallery img d-flex align-items-center"
-          style="background-image: url(images/gallery-1.jpg)">
+          style="background-image: url(<?php echo PRODUCTIMAGE; ?>gallery-1.jpg)">
           <div
             class="icon mb-4 d-flex align-items-center justify-content-center">
             <span class="icon-search"></span>
@@ -456,7 +464,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
         <a
           href="gallery.html"
           class="gallery img d-flex align-items-center"
-          style="background-image: url(images/gallery-2.jpg)">
+          style="background-image: url(<?php echo PRODUCTIMAGE; ?>gallery-2.jpg)">
           <div
             class="icon mb-4 d-flex align-items-center justify-content-center">
             <span class="icon-search"></span>
@@ -467,7 +475,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
         <a
           href="gallery.html"
           class="gallery img d-flex align-items-center"
-          style="background-image: url(images/gallery-3.jpg)">
+          style="background-image: url(<?php echo PRODUCTIMAGE; ?>gallery-3.jpg)">
           <div
             class="icon mb-4 d-flex align-items-center justify-content-center">
             <span class="icon-search"></span>
@@ -478,7 +486,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
         <a
           href="gallery.html"
           class="gallery img d-flex align-items-center"
-          style="background-image: url(images/gallery-4.jpg)">
+          style="background-image: url(<?php echo PRODUCTIMAGE; ?>gallery-4.jpg)">
           <div
             class="icon mb-4 d-flex align-items-center justify-content-center">
             <span class="icon-search"></span>
@@ -492,7 +500,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 <section
   class="ftco-section img"
   id="ftco-testimony"
-  style="background-image: url(images/bg_1.jpg)"
+  style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_1.jpg)"
   data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
@@ -520,7 +528,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
             </blockquote>
             <div class="author d-flex mt-4">
               <div class="image mr-3 align-self-center">
-                <img src="<?php echo APPURL; ?>images/<?php echo $testimonials->image; ?>" alt="client photo" />
+                <img src="<?php echo PRODUCTIMAGE . $testimonials->image; ?>" alt="client photo" />
               </div>
               <div class="name align-self-center">
                 <?php echo $testimonials->client; ?>

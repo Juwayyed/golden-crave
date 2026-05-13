@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
 <section class="home-slider owl-carousel">
   <div
     class="slider-item"
-    style="background-image: url(<?php echo APPURL; ?>/images/bg_3.jpg)"
+    style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_3.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -77,8 +77,8 @@ if (isset($_GET['id'])) {
   <div class="container">
     <div class="row">
       <div class="col-lg-6 mb-5 ftco-animate">
-        <a href="images/menu-2.jpg" class="image-popup"><img
-            src="<?php echo APPURL; ?>/images/<?php echo $singleProduct->image; ?>"
+        <a href="<?php echo PRODUCTIMAGE; ?>menu-2.jpg" class="image-popup"><img
+            src="<?php echo PRODUCTIMAGE . $singleProduct->image; ?>"
             class="img-fluid"
             alt="Product Image" /></a>
       </div>
@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
         <div class="row mt-4">
           <div class="col-md-6">
             <div class="form-group d-flex">
-              <?php if (isset($_SESSION['user_id'])) : ?>
+              <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) : ?>
                 <?php if ($rowCount == 0) : ?>
                   <div class="select-wrap">
                     <div class="icon">
@@ -186,7 +186,7 @@ if (isset($_GET['id'])) {
             <a
               href="<?php echo APPURL; ?>/products/product-details.php?id=<?php echo $allRelatedProduct->id; ?>"
               class="img"
-              style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $allRelatedProduct->image; ?>)"></a>
+              style="background-image: url(<?php echo PRODUCTIMAGE . $allRelatedProduct->image; ?>)"></a>
             <div class="text text-center pt-4">
               <h3><a href="<?php echo APPURL; ?>/products/product-details.php?id=<?php echo $allRelatedProduct->id; ?>"><?php echo $allRelatedProduct->name; ?></a></h3>
               <p>

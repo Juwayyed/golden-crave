@@ -14,7 +14,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
     <div class="card">
       <div class="card-body">
         <h5 class="card-title mb-4 d-inline">Products</h5>
-        <a href="create-products.html" class="btn btn-primary mb-4 text-center float-right">Create Products</a>
+        <a href="create-products.php" class="btn btn-primary mb-4 text-center float-right">Create Products</a>
 
         <table class="table">
           <thead>
@@ -32,10 +32,10 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
               <tr>
                 <th scope="row"><?php echo $product->id; ?></th>
                 <td><?php echo $product->name; ?></td>
-                <td><img src="../../images/<?php echo $product->image; ?>" style="width: 60px; height: 60px;""/>image</td>
+                <td><img src="../../images/<?php echo $product->image; ?>" style="width: 60px; height: 60px;" /></td>
                 <td>$<?php echo $product->price; ?></td>
                 <td><?php echo $product->category; ?></td>
-                <td><a href=" delete-products.php?id=<?php echo $product->id; ?>" class="btn btn-danger text-center ">delete</a></td>
+                <td><a href="delete-products.php?id=<?php echo $product->id; ?>" class="btn btn-danger text-center ">delete</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

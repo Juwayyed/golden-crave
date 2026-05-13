@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 <section class="home-slider owl-carousel">
     <div
         class="slider-item"
-        style="background-image: url(<?php echo "APPURL;" ?>images/bg_3.jpg)"
+        style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_3.jpg)"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
                 <div class="col-md-7 col-sm-12 text-center ftco-animate">
                     <h1 class="mb-3 mt-5 bread">Return To</h1>
                     <p class="breadcrumbs">
-                        <span class="mr-2"><a href="index.php">Home</a></span>
+                        <span class="mr-2"><a href="<?php echo APPURL; ?>">Home</a></span>
                         <span>Menu</span>
                     </p>
                 </div>

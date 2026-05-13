@@ -1,6 +1,7 @@
 <?php
 session_start();
 define("APPURL", "http://localhost/golden-crave/");
+define("PRODUCTIMAGE", "http://localhost/golden-crave/admin-panel/products-admins/images/");
 ?>
 
 <!doctype html>
@@ -42,7 +43,7 @@ define("APPURL", "http://localhost/golden-crave/");
     class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
     id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Golden<small>Crave</small></a>
+      <a class="navbar-brand" href="<?php echo APPURL; ?>">Golden<small>Crave</small></a>
       <button
         class="navbar-toggler"
         type="button"

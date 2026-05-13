@@ -26,7 +26,7 @@ if (isset($_POST['checkout'])) {
 <section class="home-slider owl-carousel">
   <div
     class="slider-item"
-    style="background-image: url(<?php echo APPURL; ?>/images/bg_3.jpg)"
+    style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_3.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -71,7 +71,7 @@ if (isset($_POST['checkout'])) {
                     <td class="image-prod">
                       <div
                         class="img"
-                        style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $product->image; ?>)"></div>
+                        style="background-image: url(<?php echo PRODUCTIMAGE . $product->image; ?>)"></div>
                     </td>
 
                     <td class="product-name">

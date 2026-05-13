@@ -16,7 +16,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 <section class="home-slider owl-carousel">
   <div
     class="slider-item"
-    style="background-image: url(<?php echo APPURL; ?>images/bg_3.jpg)"
+    style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_3.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -34,10 +34,10 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
   </div>
 </section>
 
-<section class="ftco-about d-md-flex">
+<section class="ftco-about d-md-flex" style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_4.jpg)">
   <div
     class="one-half img"
-    style="background-image: url(<?php echo APPURL; ?>images/about.jpg)"></div>
+    style="background-image: url(<?php echo PRODUCTIMAGE; ?>about.jpg)"></div>
   <div class="one-half ftco-animate">
     <div class="overlap">
       <div class="heading-section ftco-animate">
@@ -62,7 +62,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 <section
   class="ftco-section img"
   id="ftco-testimony"
-  style="background-image: url(<?php echo APPURL; ?>images/bg_1.jpg)"
+  style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_1.jpg)"
   data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
@@ -91,7 +91,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
             </blockquote>
             <div class="author d-flex mt-4">
               <div class="image mr-3 align-self-center">
-                <img src="<?php echo APPURL; ?>images/<?php echo $testimonials->image; ?>" alt="client photo" />
+                <img src="<?php echo PRODUCTIMAGE . $testimonials->image; ?>" alt="client photo" />
               </div>
               <div class="name align-self-center">
                 <?php echo $testimonials->client; ?>
@@ -106,7 +106,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
   </div>
 </section>
 
-<section class="ftco-section">
+<section class="ftco-section" style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_4.jpg)">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6 pr-md-5">
@@ -134,7 +134,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(<?php echo APPURL; ?>images/menu-1.jpg)"></a>
+                style="background-image: url(<?php echo PRODUCTIMAGE; ?>menu-1.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -142,7 +142,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(<?php echo APPURL; ?>images/menu-2.jpg)"></a>
+                style="background-image: url(<?php echo PRODUCTIMAGE; ?>menu-2.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -150,7 +150,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(<?php echo APPURL; ?>images/menu-3.jpg)"></a>
+                style="background-image: url(<?php echo PRODUCTIMAGE; ?>menu-3.jpg)"></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -158,7 +158,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
               <a
                 href="#"
                 class="img"
-                style="background-image: url(<?php echo APPURL; ?>images/menu-4.jpg)"></a>
+                style="background-image: url(<?php echo PRODUCTIMAGE; ?>menu-4.jpg)"></a>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ $allTestimonials = $testimonials->fetchAll(PDO::FETCH_OBJ);
 <section
   class="ftco-counter ftco-bg-dark img"
   id="section-counter"
-  style="background-image: url(<?php echo APPURL; ?>images/bg_2.jpg)"
+  style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_2.jpg)"
   data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">

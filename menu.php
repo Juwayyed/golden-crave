@@ -28,7 +28,7 @@ $allDesserts = $desserts->fetchAll(PDO::FETCH_OBJ);
 <section class="home-slider owl-carousel">
   <div
     class="slider-item"
-    style="background-image: url(<?php echo APPURL; ?>images/bg_3.jpg)"
+    style="background-image: url(<?php echo PRODUCTIMAGE; ?>bg_3.jpg)"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -152,11 +152,11 @@ $allDesserts = $desserts->fetchAll(PDO::FETCH_OBJ);
           <div class="pricing-entry d-flex ftco-animate">
             <div
               class="img"
-              style="background-image: url(<?php echo APPURL; ?>images/<?php echo $dishes->image; ?>)"></div>
+              style="background-image: url(<?php echo PRODUCTIMAGE . $dishes->image; ?>)"></div>
             <div class="desc pl-3">
               <div class="d-flex text align-items-center">
                 <h3><span><?php echo $dishes->name; ?></span></h3>
-                <span class="price">$<?php echo $dishes->price; ?></span>
+                <span class="price" style="background-color">$<?php echo $dishes->price; ?></span>
               </div>
               <div class="d-block">
                 <p>
@@ -174,7 +174,7 @@ $allDesserts = $desserts->fetchAll(PDO::FETCH_OBJ);
           <div class="pricing-entry d-flex ftco-animate">
             <div
               class="img"
-              style="background-image: url(<?php echo APPURL; ?>images/<?php echo $coldProducts->image; ?>)"></div>
+              style="background-image: url(<?php echo PRODUCTIMAGE . $coldProducts->image; ?>)"></div>
             <div class="desc pl-3">
               <div class="d-flex text align-items-center">
                 <h3><span><?php echo $coldProducts->name; ?></span></h3>
@@ -248,7 +248,7 @@ $allDesserts = $desserts->fetchAll(PDO::FETCH_OBJ);
                         <a
                           href="products/product-details.php?id=<?php echo $coldProducts->id; ?>"
                           class="menu-img img mb-4"
-                          style="background-image: url(<?php echo APPURL; ?>images/<?php echo $coldProducts->image; ?>)"></a>
+                          style="background-image: url(<?php echo PRODUCTIMAGE . $coldProducts->image; ?>)"></a>
                         <div class="text">
                           <h3><a href="products/product-details.php?id=<?php echo $coldProducts->id; ?>"><?php echo $coldProducts->name; ?></a></h3>
                           <p>
@@ -279,7 +279,7 @@ $allDesserts = $desserts->fetchAll(PDO::FETCH_OBJ);
                         <a
                           href="products/product-details.php?id=<?php echo $desserts->id; ?>"
                           class="menu-img img mb-4"
-                          style="background-image: url(<?php echo APPURL; ?>images/<?php echo $desserts->image; ?>)"></a>
+                          style="background-image: url(<?php echo PRODUCTIMAGE . $desserts->image; ?>)"></a>
                         <div class="text">
                           <h3><a href="products/product-details.php?id=<?php echo $desserts->id; ?>"><?php echo $desserts->name; ?></a></h3>
                           <p>
