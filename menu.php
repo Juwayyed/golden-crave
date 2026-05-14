@@ -130,12 +130,20 @@ $allDesserts = $desserts->fetchAll(PDO::FETCH_OBJ);
                 class="form-control"
                 placeholder="Message"></textarea>
             </div>
-            <div class="form-group ml-md-4">
-              <button
-                type="submit"
-                name="submit"
-                class="btn btn-white py-3 px-4">Book a Table</button>
-            </div>
+            <?php if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])) : ?>
+              <div class="form-group ml-md-4">
+                <button
+                  type="submit"
+                  name="submit"
+                  class="btn btn-white py-3 px-4">Book a Table</button>
+              </div>
+            <?php else : ?>
+              <div class="form-group ml-md-4">
+                <a
+                  href="<?php echo APPURL; ?>auth/login.php"
+                  class="btn btn-white py-3 px-4">Log In</a>
+              </div>
+            <?php endif; ?>
           </div>
         </form>
       </div>
