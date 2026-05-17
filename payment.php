@@ -34,26 +34,31 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
     <!-- Replace "test" with your own sandbox Business account app client ID -->
     <script src="https://www.paypal.com/sdk/js?client-id=AZOI-UM1keDz0jmSUSovisViJ2-EDwL1BXW0A9cA-0NZKSAERPaGPGMlcVyKWE-lL0BXCmhkk0BASPEu&currency=USD"></script>
     <!-- Set up a container element for the button -->
-    <div id="paypal-button-container"></div>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div id="paypal-button-container"></div>
+            </div>
+        </div>
+    </div>
     <script>
         paypal.Buttons({
-            // Sets up the transaction when a payment button is clicked
             createOrder: (data, actions) => {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '<?php echo $_SESSION['total_price']; ?>' // Can also reference a variable or function
+                            value: '<?php echo $_SESSION['total_price']; ?>'
                         }
                     }]
                 });
             },
-            // Finalize the transaction after payer approval
+
             onApprove: (data, actions) => {
                 return actions.order.capture().then(function(orderData) {
-
                     window.location.href = 'clear-cart.php';
                 });
             }
+
         }).render('#paypal-button-container');
     </script>
 </div>

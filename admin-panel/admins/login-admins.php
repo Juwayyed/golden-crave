@@ -36,35 +36,49 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<div class="row">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title mt-5">Login</h5>
-        <form method="POST" action="login-admins.php" class="p-auto">
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="email" name="email" id="form2Example1" class="form-control" placeholder="Email" />
+<div class="container mt-5">
+  <div class="row justify-content-center">
 
-          </div>
+    <div class="col-md-6 col-lg-4">
 
+      <div class="card shadow">
+        <div class="card-body p-4">
 
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" name="password" id="form2Example2" placeholder="Password" class="form-control" />
+          <h3 class="card-title text-center mb-4">Login</h3>
 
-          </div>
+          <form method="POST" action="login-admins.php">
 
+            <div class="mb-3">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Email">
+            </div>
 
+            <div class="mb-3">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Password">
+            </div>
 
-          <!-- Submit button -->
-          <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">Login</button>
+            <button
+              type="submit"
+              name="submit"
+              class="btn btn-primary w-100">
+              Login
+            </button>
 
+          </form>
 
-        </form>
-
+        </div>
       </div>
-    </div>
-  </div>
 
-  <?php require "../layouts/footer.php"; ?>
+    </div>
+
+  </div>
+</div>
+
+<?php require "../layouts/footer.php"; ?>

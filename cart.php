@@ -144,7 +144,7 @@ if (isset($_POST['checkout'])) {
             <?php endif; ?>
           </p>
         </div>
-        <form method="POST" action="cart.php">
+        <form method="POST" action="checkout.php">
           <input type="hidden" name="total_price" value="<?php echo $wholeCartTotal->total + 10 - 3; ?>" />
           <p class="text-center">
             <?php if (count($allproducts) > 0) : ?>
